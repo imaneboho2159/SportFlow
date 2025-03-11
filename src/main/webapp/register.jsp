@@ -180,8 +180,8 @@
       <div class="mb-3">
         <label for="role" class="form-label">Rôle</label>
         <select class="form-select" id="role" name="role" required onchange="toggleFields()">
-          <option value="member">Membre</option>
-          <option value="trainer">Entraîneur</option>
+          <option value="member">Admin</option>
+
         </select>
       </div>
       <div class="mb-3">
