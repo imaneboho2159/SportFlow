@@ -45,7 +45,7 @@
 
 <div class="container">
     <h2 class="text-center text-light">Modifier un Entraîneur</h2>
-    <form action="update_trainer.php" method="POST">
+    <form action="entraineurs" method="POST">
         <!-- ID caché -->
         <input type="hidden" name="id" value="1">
 

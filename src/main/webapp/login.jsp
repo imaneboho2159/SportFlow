@@ -7,7 +7,7 @@
     <title>SportConnect - Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <style>
         body {
             background: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
@@ -147,9 +147,9 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand animate__animated animate__pulse" href="index.html">SPORT FLOW</a>
+        <a class="navbar-brand animate__animated animate__pulse" href="index.jsp">SPORT FLOW</a>
         <div class="navbar-nav">
-            <a class="nav-link animate__animated animate__fadeIn" href="index.html">Accueil</a>
+            <a class="nav-link animate__animated animate__fadeIn" href="index.jsp">Accueil</a>
         </div>
     </div>
 </nav>
@@ -157,25 +157,31 @@
 <div class="login-section">
     <div class="login-card">
         <h1 class="text-center animate__animated animate__fadeInDown">SPORT FLOW - Connexion</h1>
-        <form action="/SportConnect/LoginServlet" method="POST">
+
+        <%-- Display error messages (if any) --%>
+        <% String error = request.getParameter("error"); %>
+        <% if (error != null) { %>
+        <div class="alert alert-danger text-center"><%= error %></div>
+        <% } %>
+
+        <form action="LoginServlet" method="Post">
             <div class="mb-3">
-                <label for="username" class="form-label">Nom d'utilisateur</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="mb-3">
-                <label for="role" class="form-label">Rôle</label>
+                <label for="role" class="form-label">Role</label>
                 <select class="form-select" id="role" name="role" required>
-                    <option value="admin">Admin</option>
+                    <option value="Admin">Admin</option>
                     <option value="member">Membre</option>
-                    <option value="trainer">Entraîneur</option>
+                    <option value="Entraineur">Entraineur</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-custom btn-login">Se connecter</button>
-            <a href="pages/register.html" class="btn btn-custom btn-register">Créer un compte</a>
         </form>
     </div>
 </div>

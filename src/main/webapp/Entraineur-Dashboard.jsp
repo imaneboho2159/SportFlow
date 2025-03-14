@@ -107,7 +107,7 @@
 <script>
     function supprimerSeance(id) {
         if (confirm("Voulez-vous vraiment supprimer cette séance ?")) {
-            // Ici, tu peux ajouter un appel AJAX pour supprimer depuis la base de données
+
             alert("Séance " + id + " supprimée !");
         }
     }

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -127,8 +128,8 @@
     <div class="container-fluid">
         <a class="navbar-brand animate__animated animate__pulse" href="#">SPORT FLOW</a>
         <div class="navbar-nav">
-            <a class="nav-link animate__animated animate__fadeIn" href="pages/login.html">Se connecter</a>
-            <a class="nav-link animate__animated animate__fadeIn" href="pages/register.html">Créer un compte</a>
+            <a class="nav-link animate__animated animate__fadeIn" href="login.jsp">Se connecter</a>
+            <a class="nav-link animate__animated animate__fadeIn" href="register.jsp">Créer un compte</a>
         </div>
     </div>
 </nav>
@@ -138,8 +139,8 @@
         <h1 class="animate__animated animate__fadeInDown">Bienvenue sur SPORT FLOW</h1>
         <p class="animate__animated animate__fadeIn">Rejoignez une communauté sportive dynamique ! Connectez-vous ou créez un compte pour gérer vos séances et profils.</p>
         <div>
-            <a href="pages/login.html" class="btn btn-custom btn-login animate__animated animate__bounceIn">Se connecter</a>
-            <a href="pages/register.html" class="btn btn-custom btn-register animate__animated animate__bounceIn">Créer un compte</a>
+            <a href="login.jsp" class="btn btn-custom btn-login animate__animated animate__bounceIn">Se connecter</a>
+            <a href="register.jsp" class="btn btn-custom btn-register animate__animated animate__bounceIn">Creer un compte</a>
         </div>
     </div>
 </div>

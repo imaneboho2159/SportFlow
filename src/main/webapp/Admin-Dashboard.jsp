@@ -112,9 +112,9 @@
     <div class="container-fluid">
         <a class="navbar-brand animate__animated animate__pulse" href="#">SPORT FLOW</a>
         <div class="navbar-nav ms-auto">
-            <a class="nav-link animate__animated animate__fadeIn" href="list_members.jsp">Membres</a>
-            <a class="nav-link animate__animated animate__fadeIn" href="list_trainers.jsp">Entraîneurs</a>
-            <a class="nav-link animate__animated animate__fadeIn" href="/SportConnect/logout.jsp">Déconnexion</a>
+            <a class="nav-link animate__animated animate__fadeIn" href="Liste-Member.jsp">Membres</a>
+            <a class="nav-link animate__animated animate__fadeIn" href="Liste-Entraineur.jsp">Entraîneurs</a>
+            <a class="nav-link animate__animated animate__fadeIn" href="Logout">Déconnexion</a>
         </div>
     </div>
 </nav>
@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-custom btn-primary">Inscrire</button>
+            <button type="submit" class="btn btn-custom btn-primary">Ajouter</button>
 
         </form>
     </div>
