@@ -1,6 +1,5 @@
 package Authentification;
 
-import Entraineur.DAO.EntraineurDao;
 import Entraineur.Model.Entraineur;
 import Member.DAO.MemberDao;
 import Member.Model.Member;
@@ -34,11 +33,7 @@ public class LoginServlet extends HttpServlet {
      if (role.equals("member")) {
          MemberDao memberDao = new MemberDao();
          Member member = new Member();
-         try {
-             member = memberDao.getMemberByEmail(email);
-         } catch (SQLException e) {
-             throw new RuntimeException(e);
-         }
+
          if(member !=null && member.getPassword().equals(password)){
              session.setAttribute("user", member);
              session.setAttribute("role", role);

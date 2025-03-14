@@ -85,14 +85,10 @@
             if (errorMessage != null) {
         %>
         <div class="error-message"><%= errorMessage %></div>
-        <% } else { %>
+        <% } %>
+
         <%
-            List<Entraineur> entraineurs = null;
-            try {
-                entraineurs = EntraineurDao.getAllEntraineur();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            List<Entraineur> entraineurs = (List<Entraineur>) request.getAttribute("entraineurs");
             if (entraineurs != null && !entraineurs.isEmpty()) {
         %>
         <table class="table table-hover">
@@ -114,7 +110,11 @@
                 <td><%= entraineur.getSpecialite() %></td>
                 <td>
                     <a href="Edite-Entraineur.jsp?id=<%= entraineur.getId() %>" class="btn btn-sm btn-primary">Modifier</a>
-                    <a href="entraineur?id=<%= entraineur.getId() %>" class="btn btn-sm btn-danger" onclick="return confirm('Voulez-vous supprimer cet entraîneur ?');">Supprimer</a>
+                    <form action="entraineurs" method="POST" style="display:inline;">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id" value="<%= entraineur.getId() %>">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Voulez-vous supprimer cet entraîneur ?');">Supprimer</button>
+                    </form>
                 </td>
             </tr>
             <% } %>
@@ -122,7 +122,6 @@
         </table>
         <% } else { %>
         <div class="text-center text-light">Aucun entraîneur trouvé.</div>
-        <% } %>
         <% } %>
     </div>
 </div>

@@ -25,9 +25,8 @@ public class EntraineurServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             List<Entraineur> entraineurs = entraineurDao.getAllEntraineur();
-            System.out.println("Nombre d'entraîneurs récupérés : " + (entraineurs != null ? entraineurs.size() : 0)); // Debugging
             request.setAttribute("entraineurs", entraineurs);
-            request.getRequestDispatcher("/Liste-Entraineur.jsp").forward(request, response); // Corrected JSP name
+            request.getRequestDispatcher("/Liste-Entraineur.jsp").forward(request, response);
         } catch (SQLException e) {
             request.setAttribute("errorMessage", "Erreur lors de la récupération des entraîneurs : " + e.getMessage());
             request.getRequestDispatcher("/Liste-Entraineur.jsp").forward(request, response);
@@ -53,7 +52,13 @@ public class EntraineurServlet extends HttpServlet {
                 entraineurDao.deleteEntraineur(id);
             }
         } catch (SQLException e) {
-            request.setAttribute("errorMessage", "Erreur lors de la mise à jour/suppression : " + e.getMessage());
+            request.setAttribute("errorMessage", "Erreur lors de l'action : " + e.getMessage());
+            request.getRequestDispatcher("/Liste-Entraineur.jsp").forward(request, response);
+            return;
+        } catch (NumberFormatException e) {
+            request.setAttribute("errorMessage", "ID invalide : " + request.getParameter("id"));
+            request.getRequestDispatcher("/Liste-Entraineur.jsp").forward(request, response);
+            return; //
         }
 
         response.sendRedirect("entraineurs");

@@ -1,6 +1,5 @@
 package Member.DAO;
 
-import Entraineur.Model.Entraineur;
 import Utils.DBConnection;
 import Member.Model.Member;
 import java.sql.Connection;
@@ -53,7 +52,7 @@ public class MemberDao {
 
 
 
-    public List<Member> getAllMember() throws SQLException {
+    public static List<Member> getAllMember() throws SQLException {
 
         List<Member> members = new ArrayList<Member>();
         try (Connection connection = DBConnection.getConnection()) {
@@ -61,13 +60,13 @@ public class MemberDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+
                 String nom = resultSet.getString("nom");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
                 String date_De_naissance = resultSet.getString("date_De_naissance");
                 String sport_prateque = resultSet.getString("sport_prateque");
-                Member member = new Member(id,nom,email,password,date_De_naissance,sport_prateque);
+                Member member = new Member(nom,email,password,date_De_naissance,sport_prateque);
                 members.add(member);
 
 
@@ -99,7 +98,26 @@ public class MemberDao {
             preparedStatement.executeUpdate();
         }
     }
-
+    public Member getMemberById(int id) throws SQLException {
+        Member member = null;
+        String query = "SELECT * FROM member WHERE id = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                member = new Member(
+                        resultSet.getInt("id"),
+                        resultSet.getString("nom"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("date_De_naissance"),
+                        resultSet.getString("sport_prateque")
+                );
+            }
+        }
+        return member;
+    }
 }
 
 

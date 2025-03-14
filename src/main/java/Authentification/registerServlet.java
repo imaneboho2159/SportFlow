@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/RegisterServlet")
 public class registerServlet extends HttpServlet {
@@ -49,7 +50,11 @@ public class registerServlet extends HttpServlet {
                 Entraineur entaraineur = new Entraineur( nom, email, password, specialite);
 
                 EntraineurDao entraineurDao = new EntraineurDao();
-                entraineurDao.createEntraineur(entaraineur);
+                try {
+                    entraineurDao.createEntraineur(entaraineur);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
 
